@@ -7,8 +7,8 @@ pipeline {
     }
 */
     environment {
-        registry = "imranvisualpath/vproappdock"
-        registryCredential = 'dockerhub'
+        registry = ""
+        registryCredential = ''
     }
 
     stages{
