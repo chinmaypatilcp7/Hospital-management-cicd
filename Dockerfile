@@ -1,14 +1,17 @@
-# Stage 1: Build the Java application
-FROM maven:3.8.4-openjdk-11-slim AS build
-WORKDIR /app
-COPY pom.xml .
-RUN mvn dependency:go-offline
-COPY src/ /app/src/
-RUN mvn package -DskipTests
+# Use the official Python image as a base image
+FROM python:3.9-slim
 
-# Stage 2: Create a lightweight image to run the Java application
-FROM openjdk:11-jre-slim
+# Set the working directory in the container
 WORKDIR /app
-COPY --from=build /app/target/hospital-management-1.0.0.jar /app/hospital-management.jar
-EXPOSE 8080
-CMD ["java", "-jar", "hospital-management.jar"]
+
+# Copy the application files to the container
+COPY app/ /app/
+
+# Install the project dependencies
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the port on which the application will listen
+EXPOSE 5000
+
+# Command to run the application
+CMD ["python", "app.py"]
