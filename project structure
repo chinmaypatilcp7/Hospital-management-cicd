@@ -1,0 +1,15 @@
+hospital-management/
+├── app/
+│   ├── __init__.py
+│   ├── models.py
+│   ├── routes.py
+│   └── templates/
+│       ├── index.html
+│       ├── patient_form.html
+│       ├── room_form.html
+│       ├── employee_form.html
+│       ├── appointment_form.html
+│       └── billing_form.html
+├── requirements.txt
+├── Dockerfile
+└── app.py
